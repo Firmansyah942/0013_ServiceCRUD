@@ -13,13 +13,13 @@ app.use(
     })
 )
 
-// Koneksi Database PostgreSQL
+// Ganti bagian pool ini:
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'mahasiswa',
-    password: 'Persetan@1', // Sesuaikan dengan password database Anda
-    port: 5432,
+    user: process.env.DB_USER || 'postgres',
+    host: process.env.DB_HOST || 'localhost',
+    database: process.env.DB_NAME || 'mahasiswa',
+    password: process.env.DB_PASSWORD || 'Persetan@1',
+    port: process.env.DB_PORT || 5432,
 })
 
 // GET ALL (Mendapatkan Semua Data)
